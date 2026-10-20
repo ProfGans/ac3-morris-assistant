@@ -1,0 +1,56 @@
+Mühle-Varianten
+===============
+Oben im Programm stehen jetzt 6er-, 9er- und 12er-Mühle zur Auswahl.
+Ein Variantenwechsel beginnt eine neue Partie und leert den bisherigen Verlauf.
+6er: 6 Steine je Farbe, 16 Punkte auf zwei Quadraten, 8 Mühlen, keine Diagonalen.
+9er: 9 Steine je Farbe, 24 Punkte auf drei Quadraten, 16 Mühlen, keine Diagonalen.
+12er: 12 Steine je Farbe, 24 Punkte, mit Diagonalverbindungen und optionalen
+      diagonalen Mühlen.
+Springen bei drei Steinen ist für AC3 bei allen drei Varianten voreingestellt
+und kann über das Kontrollkästchen angepasst werden.
+Empfehlungen einschließlich Schlagziel und Stellungseditor funktionieren in
+allen drei Varianten. Die Vorratsgrenze passt sich an die Variante an.
+
+AC3 – Twelve Men's Morris Assistent
+===================================
+Start: Starten.bat doppelt anklicken. Python 3 mit tkinter wird benötigt.
+Python 3.10 oder neuer verwenden. Keine Zusatzpakete nötig.
+
+1. Neues Spiel beginnen. Weiß beginnt im Assistenten.
+2. Übertrage jeden Zug aus AC3 per Klick auf das Brett.
+3. Wenn du dran bist, klicke „Besten Zug berechnen“.
+4. Führe den angezeigten Zug in AC3 aus und klicke „Empfehlung übernehmen“.
+5. Bei einer Mühle zeigt die Empfehlung direkt, welchen gegnerischen Stein
+   du danach nehmen sollst. Er ist rot mit NEHMEN markiert. Nach Übernahme
+   des Zuges bleibt der Schlag als nächste Empfehlung stehen: Stein in AC3
+   entfernen und erneut die Empfehlung übernehmen. Bei manuell eingegebenen
+   Mühlen startet die Schlagberechnung automatisch.
+6. Trage anschließend wieder den tatsächlichen AC3-Gegnerzug ein.
+
+Die Farben beziehen sich auf das Hilfsbrett. Du kannst beide Farben spielen.
+Zum Ziehen eigenen Stein und danach das Zielfeld anklicken.
+Nach einer Mühle einen erlaubten gegnerischen Stein anklicken.
+
+Laufende Partie übernehmen:
+„Stellung bearbeiten“ aktivieren, Steine mit Weiß/Schwarz/Feld leeren eintragen.
+Die Zahl der noch NICHT gesetzten Steine beider Seiten angeben (nach der
+Setzphase beide auf 0), Spieler am Zug wählen, „Stellung anwenden“ klicken.
+Wenn noch geschlagen werden muss, „Am Zug muss noch einen Stein nehmen“
+aktivieren, bevor du die Stellung anwendest.
+
+Regeln:
+24 Punkte, 12 Steine je Seite, Diagonalverbindungen, standardmäßig diagonale
+Mühlen und Springen auf freie Felder bei genau 3 Steinen nach dem Setzen.
+Steine in Mühlen sind geschützt, solange es schlagbare Steine außerhalb gibt.
+Auch eine doppelte Mühle erlaubt hier einen Schlag pro Zug.
+Diagonale Mühlen und Springen lassen sich an die eingeblendeten Spielregeln
+anpassen. AC3 ist nicht automatisch angebunden; Bildschirm und Gegnerzüge
+werden nicht erkannt. Die Einstellungen während einer Partie nicht ändern.
+
+KI:
+Iterative Tiefensuche mit Alpha-Beta und Stellungsbewertung, 1–60 Sekunden.
+Mehr Zeit erlaubt meist tiefere Suche. Kein vollständiger Spielbaum und keine
+Endspieldatenbank: keine Garantie für perfekte Züge oder einen Sieg.
+Wiederholungen innerhalb der Suche werden als Remis bewertet; die Oberfläche
+erzwingt keine Wiederholungs- oder Zugzahl-Remisregeln. Bei vollem Brett ohne
+möglichen Zug nach der Setzphase wird Remis angezeigt.
