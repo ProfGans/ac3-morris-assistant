@@ -144,6 +144,7 @@ class App:
         selector=ttk.Combobox(variant_row,textvariable=self.variant,values=['6er-Mühle','9er-Mühle','12er-Mühle'],state='readonly',width=15)
         selector.pack(side='left'); selector.bind('<<ComboboxSelected>>',self.variant_changed)
         ttk.Label(variant_row,text='  Wechsel startet eine neue Partie.').pack(side='left')
+        ttk.Button(variant_row,text='Fanorona öffnen',command=self.open_fanorona).pack(side='right')
         ttk.Label(main,text='AC III • Beide Seiten manuell führen, Empfehlungen ins Spiel übertragen.').pack(anchor='w',pady=(0,12))
         body=ttk.Frame(main); body.pack(fill='both',expand=True)
         self.canvas=tk.Canvas(body,width=650,height=650,bg='#14232b',highlightthickness=0)
@@ -175,7 +176,21 @@ class App:
         self.diagonal_control.pack(anchor='w')
         ttk.Checkbutton(side,text='Springen mit 3 Steinen',variable=self.flying,command=self.rule_changed).pack(anchor='w')
         ttk.Label(side,text='Such-KI, keine garantierte perfekte Lösung.\nWeiß und Schwarz beziehen sich auf dieses Brett.',wraplength=265).pack(anchor='w',pady=10)
-        self.refresh(); root.after(100,self.poll)
+        self.refresh(); self.timer=root.after(100,self.poll)
+        root.bind('<Destroy>',self.destroyed,add='+')
+
+    def destroyed(self,event):
+        if event.widget==self.root:
+            try: self.root.after_cancel(self.timer)
+            except tk.TclError: pass
+
+    def open_fanorona(self):
+        from fanorona import FanoronaApp
+        window=getattr(self,'fanorona_window',None)
+        if window is not None and window.winfo_exists():
+            window.deiconify(); window.lift(); return
+        self.fanorona_window=tk.Toplevel(self.root)
+        self.fanorona_app=FanoronaApp(self.fanorona_window)
 
     def rules(self): return Rules(self.diagonal.get(),self.flying.get(),int(self.variant.get().split('er')[0]))
     def variant_changed(self,event=None):
@@ -285,7 +300,7 @@ class App:
                     self.apply.configure(state='normal' if a else 'disabled'); self.draw()
             else: self.info.set('Stellung geändert. Bitte erneut berechnen.')
         except queue.Empty: pass
-        self.root.after(100,self.poll)
+        self.timer=self.root.after(100,self.poll)
     def use_hint(self):
         if self.hint in self.rules().actions(self.state):
             a,capture=self.hint,self.capture_hint

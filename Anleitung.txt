@@ -1,3 +1,17 @@
+Fanorona
+========
+Im Hauptfenster „Fanorona öffnen“ klicken oder python fanorona.py starten.
+Eigenen Stein, dann freies benachbartes Feld anklicken. Wenn Annäherung und
+Rückzug möglich sind, eine Schlagart über die Schaltflächen wählen.
+Schläge sind Pflicht. Entfernte Gegnersteine werden automatisch vom Brett
+entfernt. In einer Kette bleibt derselbe Stein am Zug, besuchte Felder und
+die unmittelbar vorherige Richtung sind gesperrt. Standardmäßig darfst du
+„Schlagkette beenden“ wählen; die Fortsetzung lässt sich bei Bedarf erzwingen.
+Die KI zeigt eine eigene Zugfolge mit Schlagart und roten Schlagzielen.
+Schritte einzeln nach AC3 übertragen und im Assistenten übernehmen.
+Der Editor übernimmt nur Stellungen zu Beginn eines Zuges, ohne Kettenverlauf.
+Weitere Details und Regelquelle stehen in README.md.
+
 Mühle-Varianten
 ===============
 Oben im Programm stehen jetzt 6er-, 9er- und 12er-Mühle zur Auswahl.

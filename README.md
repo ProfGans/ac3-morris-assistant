@@ -1,6 +1,6 @@
-# AC3 Mühle-Assistent · Morris Companion
+# AC3 Brettspiel-Assistent · Morris & Fanorona
 
-**Den nächsten Zug planen, Mühlen erkennen und den passenden Stein schlagen:** Ein kostenloser Desktop-Assistent für die Mühle-Minispiele in Assassin’s Creed III.
+**Den nächsten Zug planen, Mühlen bilden und Fanorona-Schlagketten berechnen:** Ein kostenloser Desktop-Assistent für Mühle und Fanorona in Assassin’s Creed III.
 
 Du möchtest den Tavernen-Gegner bei Six, Nine oder Twelve Men’s Morris schlagen? Trage die Partie auf dem Brett nach und lass dir einen Zug einschließlich Schlagziel empfehlen. Der Assistent unterstützt dich beim Spielen und beim Verstehen taktischer Drohungen.
 
@@ -39,6 +39,42 @@ Beim Ziehen zuerst den eigenen Stein, dann das Zielfeld anklicken. Nach einer M�
 
 **Stellung bearbeiten** einschalten, Brett mit Weiß/Schwarz/Feld leeren eintragen, verbleibenden Vorrat und Spieler am Zug wählen. Wenn nach einer Mühle noch geschlagen werden muss, **Am Zug muss noch einen Stein nehmen** aktivieren. Danach **Stellung anwenden** drücken.
 
+## Fanorona
+
+Im Hauptfenster **Fanorona öffnen** anklicken. Das eigene Fenster zeigt das
+9×5-Brett mit 22 Steinen pro Seite. Weiß beginnt. Alternativ direkt starten:
+
+```sh
+python fanorona.py
+```
+
+- Eigenen Stein und dann ein freies verbundenes Nachbarfeld anklicken.
+- **Schlagen ist Pflicht**, sobald irgendein eigener Stein schlagen kann.
+- **Annäherung (A):** Die ununterbrochene gegnerische Reihe vor dem Zielfeld entfernen.
+- **Rückzug (W):** Die gegnerische Reihe hinter dem Startfeld entfernen.
+- Sind beide Arten möglich, über die beiden Schaltflächen eine auswählen.
+  Es wird pro Schritt nur eine Seite geschlagen.
+- Nach einem Schlag darf derselbe Stein weiterschlagen. Kein bereits in diesem
+  Zug besuchtes Feld und keine Wiederholung der unmittelbar vorherigen Zugrichtung.
+- Standardmäßig darf eine Schlagkette beendet werden. Falls deine Spielvariante
+  die Fortsetzung erzwingt, **Schlagkette muss fortgesetzt werden** aktivieren.
+- **Besten Zug / Schlagkette berechnen** zeigt die berechnete eigene Zugfolge samt
+  Schlagart und betroffenen Feldern. Der nächste Schritt ist als Pfeil markiert;
+  zu entfernende Steine sind rot mit einem Kreuz markiert.
+- Empfehlungen **Schritt für Schritt** ins Spiel übertragen und übernehmen.
+  Gegnerzüge genauso nachtragen; geschlagene Steine entfernt der Assistent automatisch.
+
+Der Stellungseditor übernimmt Positionen **zu Beginn eines Zuges**. Eine bereits
+laufende Schlagkette lässt sich nur durch Nachspielen ihrer Schritte korrekt
+rekonstruieren; der Editor verwirft Kettenverlauf und Zugrichtung.
+Gewonnen wird durch das Entfernen aller gegnerischen Steine; ein Spieler ohne
+legalen Zug verliert ebenfalls. Wiederholungsremis werden in der Suche bewertet,
+aber nicht automatisch in der Oberfläche durchgesetzt. Keine Vela-Sonderregeln.
+
+Regelgrundlage: [ICGA – Rules of Fanorona](https://icga.org/icga/games/Fanorona/).
+Die Fanorona-Suche bewertet komplette eigene Schlagketten, ist aber zeitlich
+begrenzt und verwendet keine Endspieldatenbank. Auch hier gibt es keine Gewinngarantie.
+
 ## Wie stark ist die KI?
 
 Die KI nutzt iterative Tiefensuche, Alpha-Beta-Suche und eine Stellungsbewertung. Längere Rechenzeit ermöglicht meist tiefere Suche. Das Programm kann taktische Gewinnzüge finden und hilft beim Kampf gegen AC3-Gegner. Es gibt **keine Garantie für einen Sieg oder perfekte Spielweise**: Es verwendet weder eine vollständige Lösung des Spiels noch Endspieldatenbanken. Ein Gewinn gegen AC3 ist bisher nicht durch einen reproduzierbaren Partie-Nachweis belegt.
@@ -55,7 +91,7 @@ Die Tests prüfen unter anderem Varianten, Mühlenschutz, Springen, taktische Ge
 
 ## English
 
-A German-language Python desktop companion for Assassin’s Creed III Morris minigames. Supports Six, Nine and Twelve Men’s Morris, timed move search, capture suggestions and position editing. Run `python morris.py` with Python 3.10+ and tkinter. Moves must be entered manually; this is a heuristic assistant, not a solved-game engine or a guaranteed-win tool.
+A German-language Python desktop companion for Assassin’s Creed III Morris minigames. Supports Six, Nine and Twelve Men’s Morris plus 9×5 Fanorona with approach/withdrawal captures, capture chains, timed move search and position editing. Run `python morris.py` with Python 3.10+ and tkinter. Moves must be entered manually; this is a heuristic assistant, not a solved-game engine or a guaranteed-win tool.
 
 ## Projektstatus
 
