@@ -9,8 +9,8 @@ class MainMenu:
         self.windows={}
         self.games={}
         root.title('AC3 · Brettspiel-Assistent')
-        root.geometry('660x470')
-        root.minsize(540,430)
+        root.geometry('660x600')
+        root.minsize(540,560)
         root.configure(bg='#14232b')
         panel=tk.Frame(root,bg='#14232b',padx=36,pady=30)
         panel.pack(fill='both',expand=True)
@@ -26,12 +26,16 @@ class MainMenu:
                    command=lambda:self.open_game('fanorona')).pack(fill='x',ipady=12)
         tk.Label(panel,text='Annäherung, Rückzug und Schlagketten auf dem 9 × 5-Brett.',
                  bg='#14232b',fg='#c1d1d5',wraplength=560,justify='left').pack(anchor='w',pady=(7,20))
+        ttk.Button(panel,text='Dame öffnen · AC3 Checkers',
+                   command=lambda:self.open_game('checkers')).pack(fill='x',ipady=12)
+        tk.Label(panel,text='Zugempfehlungen, Schlagketten und Umwandlung zur Dame.',
+                 bg='#14232b',fg='#c1d1d5',wraplength=560,justify='left').pack(anchor='w',pady=(7,20))
         ttk.Button(panel,text='Beenden',command=root.destroy).pack(anchor='e',pady=(10,0))
         tk.Label(panel,text='Manuell mit AC3 abgleichen · Empfehlungen ohne Gewinngarantie',
                  bg='#14232b',fg='#c1d1d5',wraplength=560).pack(anchor='w',side='bottom')
 
     def open_game(self, name):
-        if name not in ('morris','fanorona'): raise ValueError('Unbekanntes Spiel')
+        if name not in ('morris','fanorona','checkers'): raise ValueError('Unbekanntes Spiel')
         window=self.windows.get(name)
         if window is None or not window.winfo_exists():
             window=tk.Toplevel(self.root)
@@ -40,6 +44,9 @@ class MainMenu:
             if name=='morris':
                 from morris import App
                 game=App(window,back_to_menu=callback)
+            elif name=='checkers':
+                from checkers import CheckersApp
+                game=CheckersApp(window,back_to_menu=callback)
             else:
                 from fanorona import FanoronaApp
                 game=FanoronaApp(window,back_to_menu=callback)

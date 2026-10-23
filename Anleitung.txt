@@ -1,6 +1,20 @@
+Dame / Checkers
+===============
+Im Hauptmenü „Dame öffnen · AC3 Checkers“ auswählen.
+Schwarz beginnt. Weiß zieht normalerweise nach oben, Schwarz nach unten.
+Eigenen Stein, dann grünes Zielfeld wählen. Schlagen hat Vorrang und eine
+begonnene Schlagkette muss mit demselben Stein vollständig ausgeführt werden.
+Eine Dame ist mit D markiert und kann auch rückwärts ziehen und schlagen.
+Die Empfehlung zeigt alle berechneten Schritte; Schlagziele sind rot markiert.
+In AC3 jeden Schritt ausführen und im Assistenten einzeln übernehmen.
+„Brett drehen“ dreht nur die Ansicht. Der Editor kann normale Steine und Damen
+setzen; Stellungen immer zu Beginn eines Zuges übernehmen.
+Umwandlung beendet standardmäßig den Zug; diese Regel ist per Haken anpassbar.
+Weitere Regeln, Quellen und Grenzen stehen in README.md.
+
 Hauptmenü
 =========
-Starten.bat öffnet die Spielauswahl für Mühle und Fanorona.
+Starten.bat öffnet die Spielauswahl für Mühle, Fanorona und Dame.
 Mit „← Hauptmenü“ oder dem Schließen des Spielfensters kehrst du zurück.
 Die Partie bleibt beim Wechsel erhalten. „Beenden“ schließt alle Fenster.
 

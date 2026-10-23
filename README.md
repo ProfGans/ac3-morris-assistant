@@ -1,12 +1,13 @@
-# AC3 Brettspiel-Assistent · Morris & Fanorona
+# AC3 Brettspiel-Assistent · Morris, Fanorona & Dame
 
-**Den nächsten Zug planen, Mühlen bilden und Fanorona-Schlagketten berechnen:** Ein kostenloser Desktop-Assistent für Mühle und Fanorona in Assassin’s Creed III.
+**Den nächsten Zug planen, Mühlen bilden und Fanorona-Schlagketten berechnen:** Ein kostenloser Desktop-Assistent für Mühle, Fanorona und Dame in Assassin’s Creed III.
 
 Du möchtest den Tavernen-Gegner bei Six, Nine oder Twelve Men’s Morris schlagen? Trage die Partie auf dem Brett nach und lass dir einen Zug einschließlich Schlagziel empfehlen. Der Assistent unterstützt dich beim Spielen und beim Verstehen taktischer Drohungen.
 
 ## Funktionen
 
 - **6er-, 9er- und 12er-Mühle** mit passendem Brett und Steinzahl.
+- **Fanorona und Dame (Checkers)** mit Zugempfehlungen und Schlagketten.
 - **Zugempfehlungen** mit 1–60 Sekunden einstellbarer Rechenzeit.
 - **Schlagempfehlungen direkt bei einer Mühle**, mit roter Markierung am Brett.
 - Beide Seiten manuell spielen, Züge zurücknehmen und laufende Stellungen eintragen.
@@ -27,7 +28,7 @@ python mainmenu.py
 
 ## Hauptmenü
 
-Beim Start öffnet sich die Spielauswahl: **Mühle** oder **Fanorona**. Über
+Beim Start öffnet sich die Spielauswahl: **Mühle**, **Fanorona** oder **Dame**. Über
 **← Hauptmenü** oder das Schließen des Spielfensters gelangst du zurück.
 Beim Wechsel bleibt die aktuelle Partie erhalten; **Neues Spiel** setzt sie zurück.
 **Beenden** im Hauptmenü schließt die Anwendung samt Spielfenstern.
@@ -82,6 +83,48 @@ Regelgrundlage: [ICGA – Rules of Fanorona](https://icga.org/icga/games/Fanoron
 Die Fanorona-Suche bewertet komplette eigene Schlagketten, ist aber zeitlich
 begrenzt und verwendet keine Endspieldatenbank. Auch hier gibt es keine Gewinngarantie.
 
+## Dame / Checkers (AC3)
+
+Im Hauptmenü **Dame öffnen · AC3 Checkers** wählen oder direkt starten:
+
+```sh
+python checkers.py
+```
+
+Das 8×8-Brett beginnt mit zwölf Steinen pro Seite. Schwarz beginnt; bei Bedarf
+kannst du im Stellungseditor die Seite am Zug ändern. Weiß zieht in der normalen
+Ansicht nach oben, Schwarz nach unten. **Brett drehen** zeigt Schwarz unten,
+ohne die Feldnamen oder Zugregeln zu ändern.
+
+- Eigenen Stein und dann das grün markierte Zielfeld anklicken.
+- Steine ziehen und schlagen diagonal vorwärts; Damen (mit **D** markiert)
+  dürfen auch rückwärts ziehen und schlagen. Damen ziehen ein Feld und springen
+  über einen direkt benachbarten Gegner; sie sind keine fliegenden Damen.
+- Schlagen hat Vorrang vor einem gewöhnlichen Zug. Nach einem Sprung muss
+  derselbe Stein weiterschlagen, solange es weitere Schläge gibt.
+- Bei mehreren Schlagmöglichkeiten darfst du wählen; keine Pflicht, die
+  längste Schlagkette zu nehmen. Es gibt keinen Knopf zum Abbrechen einer Kette.
+- Die gegenüberliegende Grundreihe wandelt einen Stein automatisch zur Dame um.
+  Standardmäßig beendet diese Umwandlung den Zug. Falls deine AC3-Version danach
+  noch Weiterschlagen verlangt, den Haken **Umwandlung beendet den Zug** entfernen.
+- **Besten Zug / Schlagkette berechnen** zeigt die eigene Zugfolge mit Feldnamen
+  und Schlagzielen. Der nächste Schritt erscheint als grüner Pfeil, der zu
+  entfernende Gegnerstein rot mit einem Kreuz. Schritte einzeln in AC3 ausführen
+  und im Assistenten übernehmen. Geschlagene Steine werden automatisch entfernt.
+- Im Editor normale Steine und Damen getrennt eintragen. **Stellung als neuen
+  Zug anwenden** übernimmt eine Stellung ohne laufende Schlagkette; eine Kette
+  bitte durch Nachspielen ihrer Schritte rekonstruieren.
+
+Alle Gegnersteine zu schlagen oder den Gegner vollständig zu blockieren gewinnt.
+Die Suche berücksichtigt Wiederholungen innerhalb des Suchpfads; die Oberfläche
+erzwingt keine Wiederholungs- oder Zugzahl-Remisregeln. Es gibt keine
+Endspieldatenbank und keine Gewinngarantie.
+
+Die AC3-Grundregeln sind im [Prima-Guide, Abschnitt Checkers](https://primagames.com/eguides/assassins-creed-iii-eguide/side-quests/minigames)
+beschrieben. Für dort nicht erklärte Details dienen die Regeln der
+[WCDF für englische Dame](https://wcdf.net/rules.htm) als Grundlage; insbesondere
+ist das Ende des Zuges bei der Umwandlung als anpassbare Voreinstellung umgesetzt.
+
 ## Wie stark ist die KI?
 
 Die KI nutzt iterative Tiefensuche, Alpha-Beta-Suche und eine Stellungsbewertung. Längere Rechenzeit ermöglicht meist tiefere Suche. Das Programm kann taktische Gewinnzüge finden und hilft beim Kampf gegen AC3-Gegner. Es gibt **keine Garantie für einen Sieg oder perfekte Spielweise**: Es verwendet weder eine vollständige Lösung des Spiels noch Endspieldatenbanken. Ein Gewinn gegen AC3 ist bisher nicht durch einen reproduzierbaren Partie-Nachweis belegt.
@@ -98,7 +141,7 @@ Die Tests prüfen unter anderem Varianten, Mühlenschutz, Springen, taktische Ge
 
 ## English
 
-A German-language Python desktop companion for Assassin’s Creed III Morris minigames. Supports Six, Nine and Twelve Men’s Morris plus 9×5 Fanorona with approach/withdrawal captures, capture chains, timed move search and position editing. Run `python mainmenu.py` with Python 3.10+ and tkinter. Moves must be entered manually; this is a heuristic assistant, not a solved-game engine or a guaranteed-win tool.
+A German-language Python desktop companion for Assassin’s Creed III Morris minigames. Supports Six, Nine and Twelve Men’s Morris plus 9×5 Fanorona and 8×8 English checkers, with capture chains, timed move search, king promotion and position editing. Run `python mainmenu.py` with Python 3.10+ and tkinter. Moves must be entered manually; this is a heuristic assistant, not a solved-game engine or a guaranteed-win tool.
 
 ## Projektstatus
 
