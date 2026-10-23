@@ -127,7 +127,7 @@ def search(rules,state,seconds,include_capture=False):
     return (best,value,completed,nodes,capture) if include_capture else (best,value,completed,nodes)
 
 class App:
-    def __init__(self,root):
+    def __init__(self,root,back_to_menu=None):
         self.root=root; root.title('AC3 · Mühle-Assistent'); root.geometry('1030x790')
         root.configure(bg='#14232b')
         self.state=State(); self.history=[]; self.selected=None; self.hint=None; self.version=0; self.busy=False
@@ -144,7 +144,10 @@ class App:
         selector=ttk.Combobox(variant_row,textvariable=self.variant,values=['6er-Mühle','9er-Mühle','12er-Mühle'],state='readonly',width=15)
         selector.pack(side='left'); selector.bind('<<ComboboxSelected>>',self.variant_changed)
         ttk.Label(variant_row,text='  Wechsel startet eine neue Partie.').pack(side='left')
-        ttk.Button(variant_row,text='Fanorona öffnen',command=self.open_fanorona).pack(side='right')
+        if back_to_menu is not None:
+            ttk.Button(variant_row,text='← Hauptmenü',command=back_to_menu).pack(side='right')
+        else:
+            ttk.Button(variant_row,text='Fanorona öffnen',command=self.open_fanorona).pack(side='right')
         ttk.Label(main,text='AC III • Beide Seiten manuell führen, Empfehlungen ins Spiel übertragen.').pack(anchor='w',pady=(0,12))
         body=ttk.Frame(main); body.pack(fill='both',expand=True)
         self.canvas=tk.Canvas(body,width=650,height=650,bg='#14232b',highlightthickness=0)
@@ -315,4 +318,5 @@ class App:
                 self.move(a)
 
 if __name__=='__main__':
-    root=tk.Tk(); App(root); root.mainloop()
+    from mainmenu import main
+    main()

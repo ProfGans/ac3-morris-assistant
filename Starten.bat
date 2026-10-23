@@ -1,4 +1,4 @@
 @echo off
 cd /d "%~dp0"
-python morris.py
+python mainmenu.py
 if errorlevel 1 pause

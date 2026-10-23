@@ -130,7 +130,7 @@ def search_fanorona(rules,state,seconds):
     return best,value,completed,nodes
 
 class FanoronaApp:
-    def __init__(self,root):
+    def __init__(self,root,back_to_menu=None):
         self.root=root; root.title('AC3 · Fanorona-Assistent'); root.geometry('1120x900')
         self.state=FanoronaRules().initial(); self.history=[]; self.selected=None; self.plan=()
         self.version=0; self.busy=False; self.results=queue.Queue()
@@ -138,7 +138,10 @@ class FanoronaApp:
         self.turn=tk.StringVar(value='Weiß'); self.seconds=tk.StringVar(value='5')
         self.must_continue=tk.BooleanVar(value=False); self.choice=()
         frame=ttk.Frame(root,padding=16); frame.pack(fill='both',expand=True)
-        ttk.Label(frame,text='AC3 · FANORONA',font=('Segoe UI',22,'bold')).pack(anchor='w')
+        header=ttk.Frame(frame); header.pack(fill='x')
+        ttk.Label(header,text='AC3 · FANORONA',font=('Segoe UI',22,'bold')).pack(side='left')
+        if back_to_menu is not None:
+            ttk.Button(header,text='← Hauptmenü',command=back_to_menu).pack(side='right')
         ttk.Label(frame,text='Eigener Stein → freies Nachbarfeld → bei Bedarf Schlagart wählen. Rot = entfernte Gegnersteine.').pack(anchor='w',pady=8)
         body=ttk.Frame(frame); body.pack(fill='both',expand=True)
         self.canvas=tk.Canvas(body,bg='#14232b',highlightthickness=0,width=740,height=610)

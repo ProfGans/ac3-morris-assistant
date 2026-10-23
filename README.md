@@ -22,8 +22,15 @@ Du möchtest den Tavernen-Gegner bei Six, Nine oder Twelve Men’s Morris schlag
 Alternativ:
 
 ```sh
-python morris.py
+python mainmenu.py
 ```
+
+## Hauptmenü
+
+Beim Start öffnet sich die Spielauswahl: **Mühle** oder **Fanorona**. Über
+**← Hauptmenü** oder das Schließen des Spielfensters gelangst du zurück.
+Beim Wechsel bleibt die aktuelle Partie erhalten; **Neues Spiel** setzt sie zurück.
+**Beenden** im Hauptmenü schließt die Anwendung samt Spielfenstern.
 
 ## So verwendest du den Assistenten mit AC3
 
@@ -41,7 +48,7 @@ Beim Ziehen zuerst den eigenen Stein, dann das Zielfeld anklicken. Nach einer M�
 
 ## Fanorona
 
-Im Hauptfenster **Fanorona öffnen** anklicken. Das eigene Fenster zeigt das
+Im Hauptmenü **Fanorona öffnen** anklicken. Das eigene Fenster zeigt das
 9×5-Brett mit 22 Steinen pro Seite. Weiß beginnt. Alternativ direkt starten:
 
 ```sh
@@ -91,7 +98,7 @@ Die Tests prüfen unter anderem Varianten, Mühlenschutz, Springen, taktische Ge
 
 ## English
 
-A German-language Python desktop companion for Assassin’s Creed III Morris minigames. Supports Six, Nine and Twelve Men’s Morris plus 9×5 Fanorona with approach/withdrawal captures, capture chains, timed move search and position editing. Run `python morris.py` with Python 3.10+ and tkinter. Moves must be entered manually; this is a heuristic assistant, not a solved-game engine or a guaranteed-win tool.
+A German-language Python desktop companion for Assassin’s Creed III Morris minigames. Supports Six, Nine and Twelve Men’s Morris plus 9×5 Fanorona with approach/withdrawal captures, capture chains, timed move search and position editing. Run `python mainmenu.py` with Python 3.10+ and tkinter. Moves must be entered manually; this is a heuristic assistant, not a solved-game engine or a guaranteed-win tool.
 
 ## Projektstatus
 

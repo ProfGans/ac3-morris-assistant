@@ -1,6 +1,12 @@
+Hauptmenü
+=========
+Starten.bat öffnet die Spielauswahl für Mühle und Fanorona.
+Mit „← Hauptmenü“ oder dem Schließen des Spielfensters kehrst du zurück.
+Die Partie bleibt beim Wechsel erhalten. „Beenden“ schließt alle Fenster.
+
 Fanorona
 ========
-Im Hauptfenster „Fanorona öffnen“ klicken oder python fanorona.py starten.
+Im Hauptmenü „Fanorona öffnen“ klicken oder python fanorona.py starten.
 Eigenen Stein, dann freies benachbartes Feld anklicken. Wenn Annäherung und
 Rückzug möglich sind, eine Schlagart über die Schaltflächen wählen.
 Schläge sind Pflicht. Entfernte Gegnersteine werden automatisch vom Brett
